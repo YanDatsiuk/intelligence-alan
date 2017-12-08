@@ -26,19 +26,23 @@ class ParseContent implements ShouldQueue
      */
     private $content;
 
+    private $selector;
+
     /**
      * ParseContent constructor.
      * @param string $url
+     * @param string $selector
      */
-    public function __construct(string $url)
+    public function __construct(string $url, string $selector)
     {
-        $this->url = $url;
+        $this->url      = $url;
+        $this->selector = $selector;
     }
 
     public function handle()
     {
         $article    = $doc = hQuery::fromURL($this->url, ['Accept' => config('parser.accept_headers')]);
-        $paragraphs = $article->find('div#content > p');
+        $paragraphs = $article->find($this->selector);
 
         if (!$paragraphs) {
             return;
@@ -52,8 +56,8 @@ class ParseContent implements ShouldQueue
             return;
         }
 
-        //TODO: Next step e.g
-        //$analyzer = new NLAnalyzer($this->content)
+        //TODO: Next step for example:
+        //$analyzer = new NLAnalyzer($this->content);
         //$analyzer->processContent();
     }
 }

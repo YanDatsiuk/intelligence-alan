@@ -15,22 +15,30 @@ class Parser
     private $articleUrl;
 
     /**
+     * @var string $articleSelector
+     */
+    private $articleSelector;
+
+    /**
      * Parser constructor.
      * @param string $articleUrl
+     * @param string $selector
      */
-    public function __construct(string $articleUrl)
+    public function __construct(string $articleUrl, $selector = 'div#content > p')
     {
-        $this->articleUrl = $articleUrl;
+        $this->articleUrl      = $articleUrl;
+        $this->articleSelector = $selector;
     }
 
     /**
-     * @throws \alan\ArticleParser\InvalidUrlException
+     * @param string $queue
+     * @throws InvalidUrlException
      */
-    public function pushToParserQueue()
+    public function pushToParserQueue(string $queue = 'parsing')
     {
         if (filter_var($this->articleUrl, FILTER_VALIDATE_URL) === false) {
             throw new InvalidUrlException('Url is not valid');
         }
-        dispatch(new ParseContent($this->articleUrl))->onQueue('parsing');
+        dispatch(new ParseContent($this->articleUrl, $this->articleSelector))->onQueue($queue);
     }
 }
