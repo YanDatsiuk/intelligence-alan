@@ -1,6 +1,6 @@
 <?php
 
-namespace alan\NlAnalyzer;
+namespace Alan\NlAnalyzer;
 
 use Illuminate\Support\ServiceProvider;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace alan\ArticleParser;
+namespace Alan\ArticleParser;
 
 
 /**

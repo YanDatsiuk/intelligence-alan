@@ -25,10 +25,10 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "alan\\ArticleParser\\": "packages/alan/articleParser/src/",
-            "alan\\KnowledgeSaver\\": "packages/alan/knowledgeSaver/src/",
-            "alan\\NLAnalyzer\\": "packages/alan/nlAnalyzer/src/",
-            "alan\\PatternManager\\": "packages/alan/patternManager/src/"
+            "Alan\\ArticleParser\\": "packages/alan/articleParser/src/",
+            "Alan\\KnowledgeSaver\\": "packages/alan/knowledgeSaver/src/",
+            "Alan\\NLAnalyzer\\": "packages/alan/nlAnalyzer/src/",
+            "Alan\\PatternManager\\": "packages/alan/patternManager/src/"
         }
     },
     "autoload-dev": {

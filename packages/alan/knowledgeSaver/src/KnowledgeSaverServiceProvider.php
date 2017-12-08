@@ -1,6 +1,6 @@
 <?php
 
-namespace alan\KnowledgeSaver;
+namespace Alan\KnowledgeSaver;
 
 use Illuminate\Support\ServiceProvider;
 

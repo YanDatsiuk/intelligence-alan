@@ -1,6 +1,6 @@
 <?php
 
-namespace alan\PatternManager;
+namespace Alan\PatternManager;
 
 use Illuminate\Support\ServiceProvider;
 
