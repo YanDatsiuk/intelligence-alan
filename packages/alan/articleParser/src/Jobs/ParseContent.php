@@ -41,7 +41,7 @@ class ParseContent implements ShouldQueue
 
     public function handle()
     {
-        $article    = $doc = hQuery::fromURL($this->url, ['Accept' => config('parser.accept_headers')]);
+        $article    = hQuery::fromURL($this->url, ['Accept' => config('parser.accept_headers')]);
         $paragraphs = $article->find($this->selector);
 
         if (!$paragraphs) {
@@ -59,5 +59,6 @@ class ParseContent implements ShouldQueue
         //TODO: Next step for example:
         //$analyzer = new NLAnalyzer($this->content);
         //$analyzer->processContent();
+        unset($this->content);
     }
 }
