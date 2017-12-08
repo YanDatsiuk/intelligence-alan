@@ -6,7 +6,6 @@ namespace Alan\ArticleParser;
 use hQuery;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
@@ -41,9 +40,10 @@ class ParseContent implements ShouldQueue
 
     public function handle()
     {
-        $article    = hQuery::fromURL($this->url, ['Accept' => config('parser.accept_headers')]);
-        $paragraphs = $article->find($this->selector);
+        //get article
+        $article = hQuery::fromURL($this->url, ['Accept' => config('parser.accept_headers')]);
 
+        $paragraphs = $article->find($this->selector);
         if (!$paragraphs) {
             return;
         }
@@ -59,6 +59,8 @@ class ParseContent implements ShouldQueue
         //TODO: Next step for example:
         //$analyzer = new NLAnalyzer($this->content);
         //$analyzer->processContent();
+
+        //
         unset($this->content);
     }
 }
