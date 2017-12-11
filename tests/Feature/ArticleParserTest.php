@@ -1,15 +1,27 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: miko
- * Date: 11.12.17
- * Time: 17:13
- */
 
 namespace Tests\Feature;
 
 
-class ArticleParserTest
+use Alan\ArticleParser\ParseContent;
+use Alan\ArticleParser\Parser;
+use Tests\TestCase;
+
+/**
+ * Class ArticleParserTest
+ * @package Tests\Feature
+ */
+class ArticleParserTest extends TestCase
 {
+
+    /**
+     * Check if job was dispatched
+     */
+    public function testArticleParserDispatchesJob()
+    {
+        $this->expectsJobs(ParseContent::class);
+        $parser = new Parser('https://en.wikipedia.org/wiki/Richard_Wagner', '.mw-parser-output p');
+        $parser->pushToParserQueue();
+    }
 
 }
