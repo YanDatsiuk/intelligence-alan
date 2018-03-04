@@ -55,7 +55,7 @@
             "@php artisan package:discover"
         ],
         "post-install-cmd": [
-            "wget -O public/adminer.php https://www.adminer.org/latest-en.php",
+            "wget -O public/adminer.php https://www.adminer.org/latest-en.php"
         ]
     },
     "config": {
